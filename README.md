@@ -1,1 +1,1 @@
-Code, data and the trained model will come soon. 
+# Through the Looking Glass: Neural 3D Reconstruction of Transparent Shapes
