@@ -7,4 +7,4 @@
 * Trained models: coming soon
 * Real data: coming soon
 * Real data processing: coming soon
-* Data: coming soon
+* Synthetic dataset: coming soon
