@@ -1,3 +1,10 @@
 # Through the Looking Glass: <br> Neural 3D Reconstruction of Transparent Shapes <br> ([Project page](http://cseweb.ucsd.edu/~viscomp/projects/CVPR20Transparent/) )
-Zhengqin Li*, Yu-ying Yeh* and Manmohan Chandraker (\*indicates equal contribution)
 
+## Useful links
+* Project page: http://cseweb.ucsd.edu/~viscomp/projects/CVPR20Transparent/
+* Dataset creation: https://github.com/lzqsd/TransparentShapeDatasetCreation
+* Renderer: https://github.com/lzqsd/OptixRenderer
+* Trained models: coming soon
+* Real data: coming soon
+* Real data processing: coming soon
+* Data: coming soon
