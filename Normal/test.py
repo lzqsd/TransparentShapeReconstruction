@@ -53,7 +53,6 @@ opt.gpuId = opt.deviceIds[0]
 opt.dataRoot = opt.dataRoot % opt.camNum
 
 nw = opt.normalWeight
-iw = opt.intermediateWeight
 if opt.batchSize is None:
     opt.batchSize = opt.camNum
 

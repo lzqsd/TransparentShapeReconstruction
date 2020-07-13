@@ -467,15 +467,6 @@ class groundtruthSampler():
                 im_l * w_l.expand_as(im_l )
         return imNew
 
-    def selectNearest(self, im, x, y):
-        x, y = torch.flatten(x ), torch.flatten(y )
-        x, y = torch.round(x ).long(), torch.round(y ).long()
-        x = torch.clamp(x, 0, self.imWidth-1 )
-        y = torch.clamp(y, 0, self.imHeight-1 )
-        index = y * self.imWidth + x
-        im = torch.index_select(im, 0, index )
-        return im
-
     def sampleBestView(self, origin, lookat, up,
             pointsVH, normalPointsVH,
             points, normalPoints,

@@ -49,8 +49,6 @@ parser.add_argument('--eta2', type=float, default=1.4723, help='the index of ref
 parser.add_argument('--fov', type=float, default=63.4, help='the field of view of camera' )
 # The loss parameters
 parser.add_argument('--normalWeight', type=float, default=1.0, help='the weight for normal' )
-parser.add_argument('--renderWeight', type=float, default=0.0, help='the weight for rendering loss')
-parser.add_argument('--intermediateWeight', type=float, default=0.01, help='the weight of intermediate supervision')
 # The gpu setting
 parser.add_argument('--cuda', action='store_true', help='enables cuda' )
 parser.add_argument('--deviceIds', type=int, nargs='+', default=[0], help='the gpus used for training network' )
@@ -62,8 +60,6 @@ opt.gpuId = opt.deviceIds[0]
 opt.dataRoot = opt.dataRoot + '%d' % opt.camNum
 
 nw = opt.normalWeight
-rw = opt.renderWeight
-iw = opt.intermediateWeight
 opt.dataRoot = osp.join(opt.dataRoot, opt.mode )
 opt.shapeRoot = osp.join(opt.shapeRoot, opt.mode )
 
@@ -92,7 +88,7 @@ phiJitters = np.array(phiJitters ).astype(np.float32 ) / 180.0 * np.pi
 angleNum = thetas.shape[0]
 
 if opt.experiment is None:
-    opt.experiment = "check%d_normal_nw%.2f_rw%.2f" % (opt.camNum, nw, rw)
+    opt.experiment = "check%d_normal_nw%.2f" % (opt.camNum, nw )
     if opt.isAddCostVolume:
         if opt.poolingMode == 0:
             opt.experiment +=  '_volume_sp%d_an%d_maxpool' % (opt.sampleNum, angleNum )

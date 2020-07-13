@@ -49,9 +49,9 @@ parser.add_argument('--fov', type=float, default=63.4, help='the field of view o
 parser.add_argument('--cuda', action='store_true', help='enables cuda' )
 parser.add_argument('--deviceIds', type=int, nargs='+', default=[0], help='the gpus used for training network' )
 # The view selection mode
-parser.add_argument('--viewMode', type=int, default=0, help='the view selection Mode: 0-ours, 1-nearest, 2-average')
+parser.add_argument('--viewMode', type=int, default=0, help='the view selection Mode: 0-renderError, 1-nearest, 2-average')
 # The loss function
-parser.add_argument('--lossMode', type=int, default=2, help='the loss function: 0-ours, 1-nearest, 3-chamfer')
+parser.add_argument('--lossMode', type=int, default=2, help='the loss function: 0-view, 1-nearest, 2-chamfer')
 # whether to use rendering error
 parser.add_argument('--isNoRenderError', action='store_true', help='whether to use rendering error or not')
 
@@ -68,7 +68,7 @@ if opt.experiment is None:
 
 opt.experiment += '_view_'
 if opt.viewMode == 0:
-    opt.experiment += 'ours'
+    opt.experiment += 'renderError'
 elif opt.viewMode == 1:
     opt.experiment += 'nearest'
 elif opt.viewMode == 2:
@@ -82,7 +82,7 @@ if opt.isNoRenderError:
 
 opt.experiment += '_loss_'
 if opt.lossMode == 0:
-    opt.experiment += 'ours'
+    opt.experiment += 'view'
 elif opt.lossMode == 1:
     opt.experiment += 'nearest'
 elif opt.lossMode == 2:

@@ -6,20 +6,20 @@ import tqdm
 import argparse
 
 parser = argparse.ArgumentParser()
+parser.add_argument('--dataRoot', default='../../Data/Shapes/' )
 parser.add_argument('--mode', default='test', help='whether to run on the training or testing set')
 parser.add_argument('--shapeStart', type=int, default=0, help='the start id of the shape' )
-parser.add_argument('--shapeEnd', type=int, default=3, help='the end id of the shape' )
+parser.add_argument('--shapeEnd', type=int, default=3000, help='the end id of the shape' )
 parser.add_argument('--isForceOutput', action='store_true', help='if we should overwrite previous point cloud')
 opt = parser.parse_args()
 print(opt )
 
-dataRoot = '/home/zhl/CVPR20/TransparentShape/Data/Shapes'
-dataRoot = osp.join(dataRoot, opt.mode )
+dataRoot = osp.join(opt.dataRoot, opt.mode )
 nameGt = 'poissonSubd.ply'
 
 nSample = 20000
 print(osp.join(dataRoot, 'Shape__*' ) )
-shapeList = glob.glob(osp.join(dataRoot, 'Shape__60*' ) )
+shapeList = glob.glob(osp.join(dataRoot, 'Shape__*' ) )
 print(len(shapeList ) )
 shapeList = sorted(shapeList )[opt.shapeStart : opt.shapeEnd ]
 
