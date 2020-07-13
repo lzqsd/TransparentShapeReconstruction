@@ -21,8 +21,8 @@ import open3d as o3d
 
 parser = argparse.ArgumentParser()
 # The locationi of training set
-parser.add_argument('--dataRoot', default='/home/zhl/CVPR20/TransparentShape/Data/Images%d/test/', help='path to images' )
-parser.add_argument('--shapeRoot', default='/home/zhl/CVPR20/TransparentShape/Data/Shapes/test/', help='path to images' )
+parser.add_argument('--dataRoot', default='../../Data/Images%d/test/', help='path to images' )
+parser.add_argument('--shapeRoot', default='../../Data/Shapes/test/', help='path to images' )
 parser.add_argument('--experiment', default=None, help='the path to store samples and models' )
 parser.add_argument('--outputRoot', default=None, help='the path to output the code')
 # The basic training setting
@@ -47,9 +47,9 @@ parser.add_argument('--pointWeight', type=float, default=200.0, help='the weight
 parser.add_argument('--cuda', action='store_true', help='enables cuda' )
 parser.add_argument('--deviceIds', type=int, nargs='+', default=[0], help='the gpus used for training network' )
 # The view selection mode
-parser.add_argument('--viewMode', type=int, default=0, help='the view selection Mode: 0-ours, 1-nearest, 2-average')
+parser.add_argument('--viewMode', type=int, default=0, help='the view selection Mode: 0-renderError, 1-nearest, 2-average')
 # The loss function
-parser.add_argument('--lossMode', type=int, default=2, help='the loss function: 0-ours, 1-nearest, 3-chamfer')
+parser.add_argument('--lossMode', type=int, default=2, help='the loss function: 0-view, 1-nearest, 3-chamfer')
 # Output the baseline with mapping only
 parser.add_argument('--isBaseLine', action='store_true', help='whether to output the baseline with only the normal mapping')
 # whether to use rendering error
@@ -68,7 +68,7 @@ if opt.experiment is None:
 
 opt.experiment += '_view_'
 if opt.viewMode == 0:
-    opt.experiment += 'ours'
+    opt.experiment += 'renderError'
 elif opt.viewMode == 1:
     opt.experiment += 'nearest'
 elif opt.viewMode == 2:
@@ -82,7 +82,7 @@ if opt.isNoRenderError:
 
 opt.experiment += '_loss_'
 if opt.lossMode == 0:
-    opt.experiment += 'ours'
+    opt.experiment += 'view'
 elif opt.lossMode == 1:
     opt.experiment += 'nearest'
 elif opt.lossMode == 2:
@@ -349,8 +349,8 @@ for i, dataBatch in enumerate(brdfLoader ):
     shapeName = osp.join(opt.outputRoot, 'pointCloud_%d_view_' % opt.camNum )
     outputName = osp.join(shapeRoot, 'reconstruct_%d_view_' % opt.camNum )
     if opt.viewMode == 0:
-        shapeName += 'ours'
-        outputName += 'ours'
+        shapeName += 'renderError'
+        outputName += 'renderError'
     elif opt.viewMode == 1:
         shapeName += 'nearest'
         outputName += 'nearest'
@@ -371,8 +371,8 @@ for i, dataBatch in enumerate(brdfLoader ):
         shapeName += '_loss_'
         outputName += '_loss_'
         if opt.lossMode == 0:
-            shapeName += 'ours'
-            outputName += 'ours'
+            shapeName += 'view'
+            outputName += 'view'
         elif opt.lossMode == 1:
             shapeName += 'nearest'
             outputName += 'nearest'

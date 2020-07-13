@@ -19,7 +19,7 @@ import h5py
 
 parser = argparse.ArgumentParser()
 # The locationi of training set
-parser.add_argument('--dataRoot', default='../../Data/Images', help='path to images' )
+parser.add_argument('--dataRoot', default='../../Data/Images%d', help='path to images' )
 parser.add_argument('--shapeRoot', default='../../Data/Shapes/', help='path to images' )
 parser.add_argument('--mode', default='train', help='whether to train the network or test the network')
 parser.add_argument('--experiment', default=None, help='the path to store samples and models' )
@@ -57,7 +57,7 @@ opt = parser.parse_args()
 print(opt)
 
 opt.gpuId = opt.deviceIds[0]
-opt.dataRoot = opt.dataRoot + '%d' % opt.camNum
+opt.dataRoot = opt.dataRoot % opt.camNum
 
 nw = opt.normalWeight
 opt.dataRoot = osp.join(opt.dataRoot, opt.mode )

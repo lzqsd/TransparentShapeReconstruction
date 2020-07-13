@@ -21,7 +21,7 @@ nSample = 20000
 print(osp.join(dataRoot, 'Shape__*' ) )
 shapeList = glob.glob(osp.join(dataRoot, 'Shape__*' ) )
 print(len(shapeList ) )
-shapeList = sorted(shapeList )[opt.shapeStart : opt.shapeEnd ]
+shapeList = sorted(shapeList )[opt.shapeStart : min(opt.shapeEnd, len(shapeList) ) ]
 
 for shape in shapeList:
     print('Processing... ', shape )

@@ -20,8 +20,8 @@ from chamfer_distance import ChamferDistance
 
 parser = argparse.ArgumentParser()
 # The locationi of training set
-parser.add_argument('--dataRoot', default='/home/zhl/CVPR20/TransparentShape/Data/Images%d/train/', help='path to images' )
-parser.add_argument('--shapeRoot', default='/home/zhl/CVPR20/TransparentShape/Data/Shapes/train/', help='path to images' )
+parser.add_argument('--dataRoot', default='../../Data/Images%d/train/', help='path to images' )
+parser.add_argument('--shapeRoot', default='../../Data/Shapes/train/', help='path to images' )
 parser.add_argument('--experiment', default=None, help='the path to store samples and models' )
 # Finetune parameters
 parser.add_argument('--isFineTune', action='store_true', help='whether to finetune the model or not')

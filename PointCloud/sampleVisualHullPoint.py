@@ -24,7 +24,7 @@ nSample = 20000
 print(osp.join(dataRoot, 'Shape__*' ) )
 shapeList = glob.glob(osp.join(dataRoot, 'Shape__*' ) )
 print(len(shapeList ) )
-shapeList = sorted(shapeList )[opt.rs : opt.re ]
+shapeList = sorted(shapeList )[opt.rs : min(opt.re, len(shapeList ) ) ]
 
 cnt = 0
 for shape in shapeList:

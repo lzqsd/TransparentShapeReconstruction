@@ -22,8 +22,8 @@ import trimesh as trm
 
 parser = argparse.ArgumentParser()
 # The locationi of training set
-parser.add_argument('--dataRoot', default='/home/zhl/CVPR20/TransparentShape/Data/Images%d/test/', help='path to images' )
-parser.add_argument('--shapeRoot', default='/home/zhl/CVPR20/TransparentShape/Data/Shapes/test/', help='path to images' )
+parser.add_argument('--dataRoot', default='../../Data/Images%d/test/', help='path to images' )
+parser.add_argument('--shapeRoot', default='../../Data/Shapes/test/', help='path to images' )
 parser.add_argument('--experiment', default=None, help='the path to store samples and models' )
 parser.add_argument('--testRoot', default=None, help='the path to output the code')
 # The basic training setting
@@ -37,7 +37,7 @@ parser.add_argument('--envWidth', type=int, default=512, help='the height / widt
 parser.add_argument('--camNum', type=int, default=10, help='the number of views to create the visual hull' )
 parser.add_argument('--sampleNum', type=int, default=1, help='the sample num for the cost volume' )
 parser.add_argument('--shapeStart', type=int, default=0, help='the start id of the shape' )
-parser.add_argument('--shapeEnd', type=int, default=600, help='the end id of the shape' )
+parser.add_argument('--shapeEnd', type=int, default=3000, help='the end id of the shape' )
 # The rendering parameters
 parser.add_argument('--eta1', type=float, default=1.0003, help='the index of refraction of air' )
 parser.add_argument('--eta2', type=float, default=1.4723, help='the index of refraction of glass' )
@@ -49,9 +49,9 @@ parser.add_argument('--pointWeight', type=float, default=200.0, help='the weight
 parser.add_argument('--cuda', action='store_true', help='enables cuda' )
 parser.add_argument('--deviceIds', type=int, nargs='+', default=[0], help='the gpus used for training network' )
 # The view selection mode
-parser.add_argument('--viewMode', type=int, default=0, help='the view selection Mode: 0-ours, 1-nearest, 2-average')
+parser.add_argument('--viewMode', type=int, default=0, help='the view selection Mode: 0-renderError, 1-nearest, 2-average')
 # The loss function
-parser.add_argument('--lossMode', type=int, default=2, help='the loss function: 0-ours, 1-nearest, 3-chamfer')
+parser.add_argument('--lossMode', type=int, default=2, help='the loss function: 0-view, 1-nearest, 3-chamfer')
 # Output the baseline with mapping only
 parser.add_argument('--isBaseLine', action='store_true', help='whether to output the baseline with only the normal mapping')
 # whether to use rendering error
@@ -70,7 +70,7 @@ if opt.experiment is None:
 
 opt.experiment += '_view_'
 if opt.viewMode == 0:
-    opt.experiment += 'ours'
+    opt.experiment += 'renderError'
 elif opt.viewMode == 1:
     opt.experiment += 'nearest'
 elif opt.viewMode == 2:
@@ -84,7 +84,7 @@ if opt.isNoRenderError:
 
 opt.experiment += '_loss_'
 if opt.lossMode == 0:
-    opt.experiment += 'ours'
+    opt.experiment += 'view'
 elif opt.lossMode == 1:
     opt.experiment += 'nearest'
 elif opt.lossMode == 2:
@@ -164,7 +164,7 @@ for i, dataBatch in enumerate(brdfLoader ):
 
     meshName = osp.join(shapeRoot, 'reconstruct_%d_view_' % opt.camNum )
     if opt.viewMode == 0:
-        meshName += 'ours'
+        meshName += 'renderError'
     elif opt.viewMode == 1:
         meshName += 'nearest'
     elif opt.viewMode == 2:
@@ -178,7 +178,7 @@ for i, dataBatch in enumerate(brdfLoader ):
     else:
         meshName += '_loss_'
         if opt.lossMode == 0:
-            meshName += 'ours'
+            meshName += 'view'
         elif opt.lossMode == 1:
             meshName += 'nearest'
         elif opt.lossMode == 2:
@@ -274,5 +274,4 @@ np.save('{0}/metroError_{1}.npy'.format(opt.testRoot, epoch), metroErrsNpList )
 np.save('{0}/normalError_{1}.npy'.format(opt.testRoot, epoch), normalErrsNpList )
 np.save('{0}/meanAngleError_{1}.npy'.format(opt.testRoot, epoch), meanAngleErrsNpList)
 np.save('{0}/medianAngleError_{1}.npy'.format(opt.testRoot, epoch), medianAngleErrsNpList )
-
 print('Valid Mesh Num: %s' % validCount )
