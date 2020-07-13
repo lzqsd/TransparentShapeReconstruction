@@ -216,7 +216,7 @@ for i, dataBatch in enumerate(brdfLoader ):
     normalPointGtBatch = Variable(normalPointGt_cpu ).cuda()
 
     name = dataBatch['name'][0][0]
-    shapeRoot = '/'.join(name.split('/')[0:-1] )
+    outRoot = '/'.join(name.split('/')[0:-1] )
 
     # Sample the point from visual hull
     refraction, reflection, maskTr = renderer.forward(
@@ -347,9 +347,10 @@ for i, dataBatch in enumerate(brdfLoader ):
 
 
     shapeName = osp.join(opt.outputRoot, 'pointCloud_%d_view_' % opt.camNum )
-    outputName = osp.join(shapeRoot, 'reconstruct_%d_view_' % opt.camNum )
+    outputName = osp.join(outRoot, 'reconstruct_%d_view_' % opt.camNum )
     if opt.viewMode == 0:
         shapeName += 'renderError'
+
         outputName += 'renderError'
     elif opt.viewMode == 1:
         shapeName += 'nearest'
@@ -404,7 +405,7 @@ for i, dataBatch in enumerate(brdfLoader ):
 
     # Smooth the mesh
     cmd = 'xvfb-run -a -s "-screen 0 800x600x24" meshlabserver -i %s -o %s -om vn -s remesh.mlx' % \
-            (outputName,  osp.join(shapeRoot, outputName.replace('.ply', '_Subd.ply') ) )
+            (outputName,  outputName.replace('.ply', '_Subd.ply') )
     print(cmd )
     os.system(cmd )
 

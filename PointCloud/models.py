@@ -552,7 +552,7 @@ class groundtruthSampler():
             isAlwaysNotTR = points_maskTr * maskTrBest.squeeze(1)
             isChange3 = (points_error < errorBest.squeeze(1) ) * (isAlwaysNotTR > 0) * isVisible
 
-            isChange = torch.clamp(isChange1 + isChange2 + isChange3, 0, 1)
+            isChange = torch.logical_or(torch.logical_or(isChange1, isChange2 ), isChange3)
 
             maskTrBest[isChange != 0, :] = points_maskTr.unsqueeze(1)[isChange != 0, :]
             normalBest[isChange != 0, :] = points_normal1OptWorld[isChange != 0, :]

@@ -150,7 +150,7 @@ for i, dataBatch in enumerate(brdfLoader ):
     normalPointGtBatch = Variable(normalPointGt_cpu ).cuda()
 
     name = dataBatch['name'][0][0]
-    shapeRoot = '/'.join(name.split('/')[0:-1] )
+    outRoot = '/'.join(name.split('/')[0:-1] )
 
     gtNormal = normalPointGtBatch
     gtPoint = pointGtBatch
@@ -162,7 +162,7 @@ for i, dataBatch in enumerate(brdfLoader ):
     pointPreds.append(pointVHBatch )
     normalPreds.append(normalPointVHBatch )
 
-    meshName = osp.join(shapeRoot, 'reconstruct_%d_view_' % opt.camNum )
+    meshName = osp.join(outRoot, 'reconstruct_%d_view_' % opt.camNum )
     if opt.viewMode == 0:
         meshName += 'renderError'
     elif opt.viewMode == 1:
