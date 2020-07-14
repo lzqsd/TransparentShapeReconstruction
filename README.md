@@ -36,9 +36,12 @@ The code have 2 parts. The normal prediction part is included in `Normal` direct
    * It will sample uniformly on the ground-truth shape. The sampled results will be saved in `.npy` file in the shape directory. 
 7. Run `python sampleVisualHullPoint.py --mode train` and `python sampleVisualHullPoint.py --mode test`
    * It will first sample points uniformly on visual hull geometry and the find their nearest neighbor points on the ground-truth geometry. The results will be saved in `.npy` files in the shape directory. 
-8. Run `python trainPoint.py --camNum 10`
+8. Run `python trainPoint.py --camNum 10 --cuda`
    * This will start training the customized PointNet++ for shape reconstruction. Some useful flags are listed below.
       1. `--viewMode`: Control how we choose the view when generating features for each point. The by default choice is to choose the view with the lowest rendering error. Please read our paper for more details.
       2. `--lossMode`: Control the loss to train the network. The by default choice is to use Chamfer loss, which leads to the best results. Please read our paper for more details. 
       3. We also offer different variations of PointNet++ to help reproduce the ablation studies in the supplementary material (`model maxPooling`, `model_noNormalDiff`, `model_noNormalSkip`, `model_standard`). Our customized network structure in directory `model` performs the best. 
-9. Run 
+9. Run `python outputMesh.py --cuda --camNum 10`
+   * It will output the reconstructed shape into image directory
+10. Run `python testMesh.py --cuda --camNum 10`
+   * It will compare the reonconstructed shapes and the ground-truth shapes and 
