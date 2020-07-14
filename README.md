@@ -32,6 +32,7 @@ The code have 2 parts. The normal prediction part is included in `Normal` direct
 4. Run `python optimize.py --cuda --isAddCostVolume --camNum 10 --mode train`.
    * It will use rendering error to optimize the latent vector of the decoder network for better normal prediction. The optimized predicted normals will be saved in the image directory for point cloud prediction. 
 5. Run `python optimize.py --cuda --isAddCostVolume --camNum 10 --mode test`
-6. Go to `PointCloud` directory, run `python sampleGTPointUniformly.py`.
+6. Go to `PointCloud` directory, run `python sampleGTPointUniformly.py --mode train` and `python sampleGTPointUniformly.py --mode test`.
    * It will sample uniformly on the ground-truth shape. The sampled results will be saved in `.npy` file in the shape directory. 
-7. Run `python `
+7. Run `python sampleVisualHullPoint.py --mode train` and `python sampleVisualHullPoint.py --mode test`
+   * It will first sample points uniformly on visual hull geometry and the find their nearest neighbor points on the ground-truth geometry. 
