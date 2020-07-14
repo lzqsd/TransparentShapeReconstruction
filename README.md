@@ -47,4 +47,4 @@ The code have 2 parts. The normal prediction part is included in `Normal` direct
    * It will compare the reonconstructed shapes and the ground-truth shapes and output the error.
 
 
-## Instructions for Training 5-view and 20-view Network
+## Instructions for Training 5-view and 20-view Networks
