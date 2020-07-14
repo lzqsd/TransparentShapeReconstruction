@@ -49,3 +49,6 @@ The code have 2 parts. The normal prediction part is included in `Normal` direct
 
 ## Instructions for Training 5-view and 20-view Networks
 Please rerun steps 2, 3, 4, 5, 8, 9, 10, with the flag `--camNum` set to be 5 and 20 respectively. 
+
+## Trained Models
+To test our trained models, please download them from this [link](http://cseweb.ucsd.edu/~viscomp/projects/CVPR20Transparent/models.zip). After unzipping the file, you will see 2 directories, `Normal` and `PointCloud`. Merge those directories with the `Normal` and `PointCloud` directories in this repository. Then, you will be able to test our code without training.  
