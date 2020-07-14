@@ -20,3 +20,6 @@ In order to run the code, please install
 
 ## Instructions
 The code have 2 parts. The normal prediction part is included in `Normal` directory and the point cloud prediction part is in `PointCloud` directory. We will use 10-view reconstruction as an example to demonstrate how to use the code. The instructions to train the network for 5-view and 20 view reconstructions are listed after.
+1. Prepare the dataset.
+    * Please visit this [link](https://github.com/lzqsd/TransparentShapeDatasetCreation) to check how to create the transparent shape dataset. Our rendered dataset will also be released soon. Please save the shape and images in the directory `../Data/Shapes` and `../Data/Images10` respectively.
+2. 
