@@ -35,4 +35,4 @@ The code have 2 parts. The normal prediction part is included in `Normal` direct
 6. Go to `PointCloud` directory, run `python sampleGTPointUniformly.py --mode train` and `python sampleGTPointUniformly.py --mode test`.
    * It will sample uniformly on the ground-truth shape. The sampled results will be saved in `.npy` file in the shape directory. 
 7. Run `python sampleVisualHullPoint.py --mode train` and `python sampleVisualHullPoint.py --mode test`
-   * It will first sample points uniformly on visual hull geometry and the find their nearest neighbor points on the ground-truth geometry. 
+   * It will first sample points uniformly on visual hull geometry and the find their nearest neighbor points on the ground-truth geometry. The results will be saved in `.npy` files in the shape directory. 
