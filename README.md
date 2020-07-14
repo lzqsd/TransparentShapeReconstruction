@@ -44,7 +44,7 @@ The code have 2 parts. The normal prediction part is included in `Normal` direct
 9. Run `python outputMesh.py --cuda --camNum 10`
    * It will output the reconstructed shape into image directory
 10. Run `python testMesh.py --cuda --camNum 10`
-   * It will compare the reonconstructed shapes and the ground-truth shapes and output the error.
+    * It will compare the reonconstructed shapes and the ground-truth shapes and output the error.
 
 
 ## Instructions for Training 5-view and 20-view Networks
