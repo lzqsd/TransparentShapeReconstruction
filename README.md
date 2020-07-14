@@ -16,7 +16,7 @@ This is the official code release of our paper [Through the Looking Glass: Neura
 In order to run the code, please install
 * Pytorch: versions later than 1.0 might be enough
 * Colmap: Please install Colmap from this [link](https://colmap.github.io/). We use Colmap to reconstruct mesh from point cloud prediction. 
-* Meshlab: Please install [Meshlab](https://www.meshlab.net/). We use the subdivision algorithm in Meshlab to smooth the surface so that there is no artifacts when rendering transparent shape. This is important when the BRDF is a delta function. 
+* Meshlab: Please install Meshlab from this [link](https://www.meshlab.net/). We use the subdivision algorithm in Meshlab to smooth the surface so that there is no artifacts when rendering transparent shape. This is important when the BRDF is a delta function. 
 
 ## Instructions
 The code have 2 parts. The normal prediction part is included in `Normal` directory
