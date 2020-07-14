@@ -4,7 +4,7 @@
 * Project page: http://cseweb.ucsd.edu/~viscomp/projects/CVPR20Transparent/
 * Dataset creation: https://github.com/lzqsd/TransparentShapeDatasetCreation
 * Renderer: https://github.com/lzqsd/OptixRenderer
-* Trained models: coming soon
+* Trained models: http://cseweb.ucsd.edu/~viscomp/projects/CVPR20Transparent/models.zip
 * Real data: coming soon
 * Real data processing: coming soon
 * Synthetic dataset: coming soon
