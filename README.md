@@ -19,4 +19,4 @@ In order to run the code, please install
 * Meshlab: Please install Meshlab from this [link](https://www.meshlab.net/). We use the subdivision algorithm in Meshlab to smooth the surface so that there is no artifacts when rendering transparent shape. This is important when the BRDF is a delta function. 
 
 ## Instructions
-The code have 2 parts. The normal prediction part is included in `Normal` directory and the point cloud prediction part is in `PointCloud` directory. We will use 10-view reconstruction as an example to demonstrate how to use the code. The instructions to train the network for 5-view and 20 view reconstructions will be introduced after.
+The code have 2 parts. The normal prediction part is included in `Normal` directory and the point cloud prediction part is in `PointCloud` directory. We will use 10-view reconstruction as an example to demonstrate how to use the code. The instructions to train the network for 5-view and 20 view reconstructions are listed after.
