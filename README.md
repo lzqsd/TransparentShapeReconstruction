@@ -26,4 +26,12 @@ The code have 2 parts. The normal prediction part is included in `Normal` direct
 2. Go to `Normal` directory, run `python train.py --cuda --isAddCostVolume --camNum 10`
    * This will start training the network for the two-bounce normal prediction. Some useful flags are listed below.
       1. `--isAddCostVolume`： whether to use cost volume in normal prediction
-      2. ``
+      2. `--poolingMode`: Control how we process the feature extracted from cost volume. By default we will use the learnable pooling. 
+      3. `--isNoErrMap`: whether to add rendering error as an input for normal prediction. (line 248)
+3. Run `python test.py --cuda --isAddCostVolume --camNum 10` to test the trained model. 
+4. Run `python optimize.py --cuda --isAddCostVolume --camNum 10 --mode train`.
+   * It will use rendering error to optimize the latent vector of the decoder network for better normal prediction. The optimized predicted normals will be saved in the image directory for point cloud prediction. 
+5. Run `python optimize.py --cuda --isAddCostVolume --camNum 10 --mode test`
+6. Go to `PointCloud` directory, run `python sampleGTPointUniformly.py`.
+   * It will sample uniformly on the ground-truth shape. The sampled results will be saved in `.npy` file in the shape directory. 
+7. Run `python `
