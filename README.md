@@ -23,7 +23,7 @@ In order to run the code, please install
 ## Instructions for Training 10-view Network
 The code have 2 parts. The normal prediction part is included in `Normal` directory and the point cloud prediction part is in `PointCloud` directory. We will use 10-view reconstruction as an example to demonstrate how to use the code. The instructions to train the network for 5-view and 20 view reconstructions are listed after.
 1. Prepare the dataset.
-    * Please visit this [link](https://github.com/lzqsd/TransparentShapeDatasetCreation) to check how to create the transparent shape dataset. Our rendered dataset will also be released soon. However, you may not be able to directly test on our dataset since the paths towards environment maps cannot be the same. Please save the shapes and images in the directory `../Data/Shapes` and `../Data/Images10` respectively.
+    * Please visit this [link](https://github.com/lzqsd/TransparentShapeDatasetCreation) to check how to create the transparent shape dataset and this [link](https://github.com/lzqsd/TransparentShapeDataset) to download our synthetic dataset. Please save the shapes and images in the directory `../Data/Shapes` and `../Data/Images10` respectively.
 2. Go to `Normal` directory, run `python train.py --cuda --isAddCostVolume --camNum 10`
    * This will start training the network for the two-bounce normal prediction. Some useful flags are listed below.
       1. `--isAddCostVolume`： whether to use cost volume in normal prediction
