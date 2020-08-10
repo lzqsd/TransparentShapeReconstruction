@@ -6,8 +6,8 @@
 * Renderer: https://github.com/lzqsd/OptixRenderer
 * Trained models: http://cseweb.ucsd.edu/~viscomp/projects/CVPR20Transparent/models.zip
 * Synthetic dataset: https://github.com/lzqsd/TransparentShapeDataset
-* Real data: coming soon
-* Real data processing: coming soon
+* Real data processing: https://github.com/yuyingyeh/TransparentShapeRealData
+* Real data: Coming soon
 
 
 ## Overview
